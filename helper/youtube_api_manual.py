@@ -19,6 +19,7 @@ def printj(dict_to_print: dict) -> None:
     print(json.dumps(dict_to_print, indent=2, ensure_ascii=False))
 
 
+
 '''
 получить данные о канале по его id
 docs: https://developers.google.com/youtube/v3/docs/channels/list
