@@ -2,6 +2,7 @@ from src.channel import Channel
 
 if __name__ == '__main__':
     moscowpython = Channel('UC-OVMPlMA3-YCIeg4z5z23A')
+    moscowpython.add_self_attr()
 
     # получаем значения атрибутов
     print(moscowpython.title)  # MoscowPython
@@ -16,5 +17,5 @@ if __name__ == '__main__':
     print(Channel.get_service())
     # <googleapiclient.discovery.Resource object at 0x000002B1E54F9750>
 
-    # создаем файл 'moscowpython.json' в данными по каналу
+    # создаем файл 'moscowpython.json' c данными по каналу
     moscowpython.to_json('moscowpython.json')
