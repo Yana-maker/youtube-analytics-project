@@ -9,15 +9,15 @@ FILE = 'moscowpython.json'
 class Channel:
     """Класс для ютуб-канала"""
 
-    def __init__(self, channel_id: str) -> None:
+    def __init__(self, channel_id: str, title=None, description=None, url=None, subscriberCount=None, video_count=None, viewCount=None) -> None:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
         self.__channel_id = channel_id
-        self.title = None
-        self.description = None
-        self.url = None
-        self.subscriberCount = None
-        self.video_count = None
-        self.viewCount = None
+        self.title = title
+        self.description = description
+        self.url = url
+        self.subscriberCount = subscriberCount
+        self.video_count = video_count
+        self.viewCount = viewCount
 
     def __str__(self):
         '''возвращаем str строку'''
@@ -45,8 +45,6 @@ class Channel:
     @property
     def channel_id(self):
         return self.__channel_id
-
-
 
     @classmethod
     def get_service(cls):
@@ -90,3 +88,8 @@ class Channel:
         channel_id = self.channel_id
         channel = youtube.channels().list(id=channel_id, part='snippet,statistics').execute()
         print(json.dumps(channel, indent=2, ensure_ascii=False))
+
+
+
+
+

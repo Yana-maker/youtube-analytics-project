@@ -32,6 +32,8 @@ channel = youtube.channels().list(id=channel_id, part='snippet,statistics').exec
 printj(channel)
 
 
+
+
 '''
 получить данные по play-листам канала
 docs: https://developers.google.com/youtube/v3/docs/playlists/list
