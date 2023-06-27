@@ -3,7 +3,7 @@ from googleapiclient.discovery import build
 from src.channel import Channel
 
 
-class Video(Channel):
+class Video:
     def __init__(self, video_id):
         self.video_id = video_id
         self.title = None
@@ -15,9 +15,7 @@ class Video(Channel):
     def __str__(self):
         return f'{self.title}'
 
-
     def add_attr(self):
-
         api_key: str = os.getenv('YT_API_KEY')
         youtube = build('youtube', 'v3', developerKey=api_key)
         video_response = youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
@@ -31,11 +29,7 @@ class Video(Channel):
         self.comment_count: int = video_response['items'][0]['statistics']['commentCount']
 
 
-
 class PLVideo(Video):
     def __init__(self, video_id, pl):
         super().__init__(video_id)
         self.pl = pl
-
-
-
