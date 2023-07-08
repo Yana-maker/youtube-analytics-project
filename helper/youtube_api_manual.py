@@ -84,6 +84,7 @@ for video in video_response['items']:
     print(duration)
 
 
+
 '''
 получить статистику видео по его id
 получить id можно из адреса видео
