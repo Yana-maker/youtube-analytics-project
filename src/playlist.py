@@ -6,7 +6,7 @@ from datetime import timedelta
 
 
 class PlayList:
-    ''' инициализируется _id_ плейлиста и имеет следующие публичные атрибуты:
+    '''инициализируется _id_ плейлиста и имеет следующие публичные атрибуты:
     название плейлиста и ссылку на плейлист + id видео для функции'''
     def __init__(self, playlist_id):
         self.playlist_id = playlist_id
@@ -45,9 +45,9 @@ class PlayList:
         for i in result:
             h, m, s = map(int, i.split(":"))
             total += 3600*h + 60*m + s
-        s = "%02d:%02d:%02d" % (total/3600, total / 60 % 60, total % 60)
-        t = datetime.datetime.strptime(s,"%H:%M:%S")
-        delta = timedelta(hours=t.hour, minutes=t.minute, seconds=t.second)
+        str_format = "%02d:%02d:%02d" % (total/3600, total / 60 % 60, total % 60)
+        datetime_format = datetime.datetime.strptime(str_format,"%H:%M:%S")
+        delta = timedelta(hours=datetime_format.hour, minutes=datetime_format.minute, seconds=datetime_format.second)
         return delta
 
 
