@@ -5,6 +5,7 @@ import datetime
 from datetime import timedelta
 
 
+
 class PlayList:
     '''инициализируется _id_ плейлиста и имеет следующие публичные атрибуты:
     название плейлиста и ссылку на плейлист + id видео для функции'''
@@ -35,20 +36,12 @@ class PlayList:
         video_response = youtube.videos().list(part='contentDetails,statistics',
                                                id=','.join(self.video_ids)
                                                ).execute()
-        result = []
-        total = 0
+
+        duration = datetime.timedelta()
         for video in video_response['items']:
             iso_8601_duration = video['contentDetails']['duration']
-            duration = isodate.parse_duration(iso_8601_duration)
-            result.append(str(duration))
-
-        for i in result:
-            h, m, s = map(int, i.split(":"))
-            total += 3600*h + 60*m + s
-        str_format = "%02d:%02d:%02d" % (total/3600, total / 60 % 60, total % 60)
-        datetime_format = datetime.datetime.strptime(str_format,"%H:%M:%S")
-        delta = timedelta(hours=datetime_format.hour, minutes=datetime_format.minute, seconds=datetime_format.second)
-        return delta
+            duration += isodate.parse_duration(iso_8601_duration)
+        return duration
 
 
     def show_best_video(self):
