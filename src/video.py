@@ -18,7 +18,7 @@ class Video:
             self.like_count: int = video_response['items'][0]['statistics']['likeCount']
             self.comment_count: int = video_response['items'][0]['statistics']['commentCount']
 
-        except:
+        except IndexError:
             self.title: str = None
             self.view_count: int = None
             self.url: str = None
